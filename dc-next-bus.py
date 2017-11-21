@@ -74,11 +74,11 @@ def get_welcome_response():
     card_title = "Welcome"
     speech_output = "Welcome to DC Next Bus. " \
                     "Please tell me what bus stop number you'd like information for by saying, " \
-                    "next bus for 1001872"
+                    "next bus for <say-as interpret-as=\"digits\">1001872</say-as>"
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = "Please tell me your bus stop number by saying, " \
-                    "next bus for 1001872."
+                    "next bus for <say-as interpret-as=\"digits\">1001872</say-as>"
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
@@ -119,7 +119,7 @@ def set_stop_in_session(intent, session):
                         "Please try again."
         reprompt_text = "I'm not sure what bus stop you want information for.  " \
                         "You can get information by saying, " \
-                        "next bus for 1001872"
+                        "next bus for <say-as interpret-as=\"digits\">1001872</say-as>"
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
@@ -157,7 +157,7 @@ def get_info_from_session(intent, session):
         should_end_session = True
     else:
         speech_output = "I'm not sure what bus stop you want information for. " \
-                        "You can say, next bus for 1001872."
+                        "You can say, next bus for <say-as interpret-as=\"digits\">1001872</say-as>"
         should_end_session = False
 
     # Setting reprompt_text to None signifies that we do not want to reprompt
